@@ -1,19 +1,25 @@
 import { Lightning } from '@lightningjs/sdk';
 import Menu from './menu/Menu.js';
 
-export default class Main extends Lightning.Component {
+export default class Settings extends Lightning.Component {
   static _template() {
     return {
+      Text: {
+        x: 600,
+        y: 300,
+        text: {
+          fontSize: 32,
+          textAlign: 'center',
+          text: 'Game mode',
+        },
+      },
       Menu: {
         x: 600,
         y: 400,
         type: Menu,
         items: [
-          { label: 'START NEW GAME', action: 'start' },
-          { label: 'CONTINUE', action: 'continue' },
-          { label: 'SETTINGS', action: 'settings' },
-          { label: 'ABOUT', action: 'about' },
-          { label: 'EXIT', action: 'exit' },
+          { label: 'PVE (versus AI)', action: 'gamemode_pve' },
+          { label: 'PVP', action: 'gamemode_pvp' },
         ],
       },
     };

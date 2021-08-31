@@ -2,6 +2,7 @@ import { Lightning, Utils } from '@lightningjs/sdk';
 import Splash from './Splash.js';
 import Main from './Main.js';
 import Game from './Game.js';
+import Settings from './Settings';
 
 export default class App extends Lightning.Component {
   static getFonts() {
@@ -29,6 +30,10 @@ export default class App extends Lightning.Component {
       },
       Game: {
         type: Game,
+        alpha: 0,
+      },
+      Settings: {
+        type: Settings,
         alpha: 0,
       },
     };
@@ -72,6 +77,10 @@ export default class App extends Lightning.Component {
           }
         }
 
+        settings() {
+          this._setState('Settings');
+        }
+
         start() {
           this._setState('Game');
         }
@@ -80,6 +89,28 @@ export default class App extends Lightning.Component {
         // component which handles the remotecontrol
         _getFocused() {
           return this.tag('Main');
+        }
+      },
+      class Settings extends this {
+        $enter() {
+          this.tag('Settings').setSmooth('alpha', 1);
+        }
+
+        $exit() {
+          this.tag('Settings').setSmooth('alpha', 0);
+        }
+
+        _getFocused() {
+          return this.tag('Settings');
+        }
+
+        gamemode_pve() {
+          // this._setState('Main');
+          console.log('gayflex');
+        }
+
+        gamemode_pvp() {
+          // this._setState('Main');
         }
       },
       class Game extends this {

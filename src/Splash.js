@@ -14,7 +14,7 @@ export default class Splash extends Lightning.Component {
 
   _init() {
     this._pulse = this.tag('Logo').animation({
-      duration: 4,
+      duration: 1,
       repeat: 0,
       actions: [{ p: 'alpha', v: { 0: 0, 0.5: 0.5, 1: 0 } }],
     });
